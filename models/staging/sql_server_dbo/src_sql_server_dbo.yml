@@ -21,6 +21,9 @@ sources:
         loaded_at_field: _fivetran_synced
         columns:
           - name: address_id
+            tests:
+              - unique
+              - not_null   
           - name: zipcode
           - name: country
           - name: address
