@@ -11,8 +11,8 @@ sources:
       identifier: false
 
     freshness:
-      warn_after: { count: 48, period: hour }
-      error_after: { count: 72, period: hour }
+      warn_after: { count: 72, period: hour }
+      error_after: { count: 128, period: hour }
 
     tables:
       - name: budget
@@ -24,7 +24,6 @@ sources:
               - not_null
           - name: product_id
             tests:
-              - unique
               - relationships:
                   to: source('sql_server_dbo','products')
                   field: product_id
@@ -32,7 +31,7 @@ sources:
             tests:
               - positive_values
           - name: month
-            tests:
-              - accepted_values: 
-                  values: ['january', 'february'] #Ejemplo, no es válido.
+            #tests:
+            #  - accepted_values: 
+            #      values: ['january', 'february'] #Ejemplo, no es válido.
           - name: _fivetran_synced

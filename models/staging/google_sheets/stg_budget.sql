@@ -6,7 +6,7 @@ WITH src_budget_products AS (
 
 renamed_casted AS (
     SELECT
-          _row
+          _row as budget_id
         , product_id
         , quantity
         , month
