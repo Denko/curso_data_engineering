@@ -46,45 +46,51 @@ sources:
             description: ""
 
       - name: events
-        description: ""
+        description: >
+          Data about events in the platform of demo.
         columns:
           - name: event_id
-            data_type: varchar
-            description: ""
+            description: >
+              UUID of each unique event on the platform.
             tests:
+              - not_null
               - unique
-              - not_null 
-          - name: page_url
-            data_type: varchar
-            description: ""
-          - name: event_type
-            data_type: varchar
-            description: ""
-          - name: user_id
-            data_type: varchar
-            description: ""
-            tests:
-              - relationships:
-                  to: source('sql_server_dbo','users')
-                  field: user_id
-          - name: product_id
-            data_type: varchar
-            description: ""
           - name: session_id
-            data_type: varchar
-            description: ""
+            description: >
+              UUID of each browsing session on the platform which can contain many events.
+            tests:
+              - not_null
+          - name: user_id
+            description: >
+              UUID of the user that this event is associated with.
+            tests:
+              - not_null
+          - name: page_url
+            description: >
+              URL that the event happened on.
+            tests:
+              - not_null
           - name: created_at
-            data_type: timestamp_ntz
-            description: ""
+            description: >
+              Timestamp of the event (UTC).
+            tests:
+              - not_null
+          - name: event_type
+            description: >
+              Type of event.
+            tests:
+              - not_null
           - name: order_id
-            data_type: varchar
-            description: ""
-          - name: _fivetran_deleted
-            data_type: boolean
-            description: ""
+            description: >
+              If the event is specific to an order (mostly used for checkout).
+          - name: product_id
+            description: >
+              If the event is specific to a product.
           - name: _fivetran_synced
-            data_type: timestamp_tz
-            description: ""
+            description: >
+              Date that the data was loaded.
+            tests:
+              - not_null
 
       - name: order_items
         description: ""
@@ -167,7 +173,7 @@ sources:
             description: ""
           - name: status
             data_type: varchar
-            description: ""
+            description: "{{ doc('order_status') }}"
           - name: _fivetran_deleted
             data_type: boolean
             description: ""
