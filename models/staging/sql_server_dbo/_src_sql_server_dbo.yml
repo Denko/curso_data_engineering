@@ -23,7 +23,7 @@ sources:
           - name: address_id
             tests:
               - unique
-              - not_null 
+              - not_null
             data_type: varchar
             description: ""
           - name: zipcode
@@ -46,51 +46,45 @@ sources:
             description: ""
 
       - name: events
-        description: >
-          Data about events in the platform of demo.
+        description: ""
         columns:
           - name: event_id
-            description: >
-              UUID of each unique event on the platform.
+            data_type: varchar
+            description: ""
             tests:
-              - not_null
               - unique
-          - name: session_id
-            description: >
-              UUID of each browsing session on the platform which can contain many events.
-            tests:
-              - not_null
-          - name: user_id
-            description: >
-              UUID of the user that this event is associated with.
-            tests:
               - not_null
           - name: page_url
-            description: >
-              URL that the event happened on.
-            tests:
-              - not_null
-          - name: created_at
-            description: >
-              Timestamp of the event (UTC).
-            tests:
-              - not_null
+            data_type: varchar
+            description: ""
           - name: event_type
-            description: >
-              Type of event.
+            data_type: varchar
+            description: ""
+          - name: user_id
+            data_type: varchar
+            description: ""
             tests:
-              - not_null
-          - name: order_id
-            description: >
-              If the event is specific to an order (mostly used for checkout).
+              - relationships:
+                  to: source('sql_server_dbo','users')
+                  field: user_id
           - name: product_id
-            description: >
-              If the event is specific to a product.
+            data_type: varchar
+            description: ""
+          - name: session_id
+            data_type: varchar
+            description: ""
+          - name: created_at
+            data_type: timestamp_ntz
+            description: ""
+          - name: order_id
+            data_type: varchar
+            description: ""
+          - name: _fivetran_deleted
+            data_type: boolean
+            description: ""
           - name: _fivetran_synced
-            description: >
-              Date that the data was loaded.
-            tests:
-              - not_null
+            data_type: timestamp_tz
+            description: ""
 
       - name: order_items
         description: ""
@@ -99,10 +93,10 @@ sources:
             data_type: varchar
             description: ""
             tests:
-            - not_null 
-            - relationships:
-                to: source('sql_server_dbo','orders')
-                field: order_id
+              - not_null
+              - relationships:
+                  to: source('sql_server_dbo','orders')
+                  field: order_id
           - name: product_id
             data_type: varchar
             description: ""
@@ -129,7 +123,7 @@ sources:
             description: ""
             tests:
               - unique
-              - not_null 
+              - not_null
           - name: shipping_service
             data_type: varchar
             description: ""
@@ -173,7 +167,7 @@ sources:
             description: ""
           - name: status
             data_type: varchar
-            description: "{{ doc('order_status') }}"
+            description: ""
           - name: _fivetran_deleted
             data_type: boolean
             description: ""
@@ -189,7 +183,7 @@ sources:
             description: ""
             tests:
               - unique
-              - not_null 
+              - not_null
           - name: price
             data_type: float
             description: ""
@@ -214,7 +208,7 @@ sources:
             description: ""
             tests:
               - unique
-              - not_null 
+              - not_null
           - name: discount
             data_type: number
             description: ""
@@ -236,7 +230,7 @@ sources:
             description: ""
             tests:
               - unique
-              - not_null 
+              - not_null
           - name: updated_at
             data_type: timestamp_tz
             description: ""

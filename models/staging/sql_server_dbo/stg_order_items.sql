@@ -1,4 +1,4 @@
-with 
+with
 
 source as (
 
@@ -13,7 +13,7 @@ renamed as (
         product_id,
         quantity,
         _fivetran_deleted,
-        _fivetran_synced AS date_load
+        _fivetran_synced as date_load
 
     from source
 
