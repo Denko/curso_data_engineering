@@ -17,7 +17,7 @@ renamed as (
         phone_number,
         total_orders,
         first_name,
-        email,
+        email::varchar(256),
         _fivetran_deleted,
         _fivetran_synced as date_load
 

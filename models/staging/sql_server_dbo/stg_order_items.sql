@@ -9,9 +9,9 @@ source as (
 renamed as (
 
     select
-        order_id,
-        product_id,
-        quantity,
+        order_id::varchar(256),
+        product_id::varchar(256),
+        quantity::number(38,0),
         _fivetran_deleted,
         _fivetran_synced as date_load
 

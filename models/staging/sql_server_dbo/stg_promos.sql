@@ -9,10 +9,10 @@ source as (
 renamed as (
 
     select
-        promo_id,
-        name as promo_name,
-        discount as promo_discount,
-        status as promo_status,
+        promo_id::varchar(256),
+        name::varchar(32) as promo_name,
+        discount::number(38,0) as promo_discount,
+        status::varchar(256) as promo_status,
         _fivetran_deleted,
         _fivetran_synced as date_load
 
