@@ -13,7 +13,7 @@ renamed as (
         product_id::varchar(256),
         quantity::number(38,0),
         _fivetran_deleted,
-        _fivetran_synced as date_load
+        _fivetran_synced as loaded_at
 
     from source
 

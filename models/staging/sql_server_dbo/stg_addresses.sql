@@ -12,7 +12,7 @@ renamed_casted AS (
         address::varchar(150),
         state::varchar(50),
         _fivetran_deleted,
-        _fivetran_synced AS date_load
+        _fivetran_synced AS loaded_at
     FROM src_addresses
 )
 

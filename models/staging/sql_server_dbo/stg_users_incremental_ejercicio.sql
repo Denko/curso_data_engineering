@@ -17,17 +17,12 @@ WITH stg_users_incremental AS (
 
 renamed_casted AS (
     SELECT
-        user_id::varchar(256),
-        updated_at::timestamp_tz(9),
-        address_id::varchar(256),
-        last_name::varchar(256),
-        created_at::timestamp_tz(9),
-        phone_number::varchar(50),
-        total_orders::number(38,0),
-        first_name::varchar(256),
-        email::varchar(256),
-        _fivetran_deleted,
-        _fivetran_synced as loaded_at
+        user_id,
+        first_name,
+        last_name,
+        address_id,
+        replace(phone_number, '-', '')::number AS phone_number,
+        _fivetran_synced AS f_carga
     FROM stg_users_incremental
 )
 

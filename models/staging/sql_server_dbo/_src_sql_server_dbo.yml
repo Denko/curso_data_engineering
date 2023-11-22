@@ -167,7 +167,7 @@ sources:
             description: ""
           - name: status
             data_type: varchar
-            description: ""
+            description: "{{ doc('order_status') }}"
           - name: _fivetran_deleted
             data_type: boolean
             description: ""

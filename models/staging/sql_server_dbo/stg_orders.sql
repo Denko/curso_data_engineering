@@ -23,7 +23,7 @@ renamed as (
         tracking_id::varchar(256),
         order_status,
         _fivetran_deleted,
-        _fivetran_synced as date_load
+        _fivetran_synced as loaded_at
 
     from source
 

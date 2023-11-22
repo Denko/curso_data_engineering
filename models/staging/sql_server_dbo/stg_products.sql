@@ -14,7 +14,7 @@ renamed as (
         name::varchar(256) as product_name,
         inventory::number(38,0),
         _fivetran_deleted,
-        _fivetran_synced as date_load
+        _fivetran_synced as loaded_at
 
     from source
 

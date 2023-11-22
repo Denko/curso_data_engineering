@@ -9,17 +9,17 @@ source as (
 renamed as (
 
     select
-        user_id,
-        updated_at,
-        address_id,
-        last_name,
-        created_at,
-        phone_number,
-        total_orders,
-        first_name,
+        user_id::varchar(256),
+        updated_at::timestamp_tz(9),
+        address_id::varchar(256),
+        last_name::varchar(256),
+        created_at::timestamp_tz(9),
+        phone_number::varchar(50),
+        total_orders::number(38,0),
+        first_name::varchar(256),
         email::varchar(256),
         _fivetran_deleted,
-        _fivetran_synced as date_load
+        _fivetran_synced as loaded_at
 
     from source
 
