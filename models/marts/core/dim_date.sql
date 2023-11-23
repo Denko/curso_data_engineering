@@ -9,7 +9,7 @@ source as (
 renamed as (
 
     select
-        date_day as fecha_forecast
+        date_forecast
         , id_date
         , year_date
         , month_date

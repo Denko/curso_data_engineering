@@ -34,7 +34,7 @@ union all
 -- Code 9999 for no order and today date for loading
 select {{ dbt_utils.generate_surrogate_key('9999') }},
         'no_shipping_service',
-        0,
+        null,
         {{ dbt_utils.generate_surrogate_key('9999') }}, 
         null, 
         {{ dbt_utils.generate_surrogate_key('9999') }},
