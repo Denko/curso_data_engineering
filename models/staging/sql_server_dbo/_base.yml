@@ -1,0 +1,87 @@
+version: 2
+
+models:
+  - name: base_orders
+    description: ""
+    columns:
+      - name: order_id
+        data_type: varchar
+        description: ""
+        tests:
+          - unique
+          - not_null
+      - name: shipping_service
+        data_type: varchar
+        description: ""
+      - name: shipping_cost
+        data_type: float
+        description: ""
+      - name: address_id
+        data_type: varchar
+        description: ""
+        tests:
+          - relationships:
+              to: source('sql_server_dbo','addresses')
+              field: address_id
+      - name: created_at
+        data_type: timestamp_tz
+        description: ""
+      - name: promo_id
+        data_type: varchar
+        description: ""
+      - name: estimated_delivery_at
+        data_type: timestamp_tz
+        description: ""
+      - name: order_cost
+        data_type: float
+        description: ""
+      - name: user_id
+        data_type: varchar
+        description: ""
+        tests:
+          - relationships:
+              to: source('sql_server_dbo','users')
+              field: user_id
+      - name: order_total
+        data_type: float
+        description: ""
+      - name: delivered_at
+        data_type: timestamp_tz
+        description: ""
+      - name: tracking_id
+        data_type: varchar
+        description: ""
+      - name: status
+        data_type: varchar
+        description: ""
+      - name: _fivetran_deleted
+        data_type: boolean
+        description: ""
+      - name: _fivetran_synced
+        data_type: timestamp_tz
+        description: ""
+
+  - name: base_promos
+    description: ""
+    columns:
+      - name: promo_id
+        data_type: varchar
+        description: ""
+        tests:
+          - unique
+          - not_null
+      - name: name
+        data_type: varchar
+        description: ""
+      - name: discount
+        data_type: number
+        description: ""
+      - name: status
+        data_type: varchar
+        description: ""
+      - name: _fivetran_deleted
+        data_type: boolean
+        description: ""
+      - name: _fivetran_synced
+        data_type: timestamp_tz
+        description: ""

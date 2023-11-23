@@ -1,0 +1,198 @@
+version: 2
+
+models:
+  - name: stg_dates
+    description: ""
+    columns:
+      - name: fecha_forecast
+      - name: id_date
+      - name: year_date
+      - name: month_date
+      - name: desc_month
+      - name: id_year_month
+      - name: day_before
+      - name: year_week_day
+      - name: week_date
+
+  - name: stg_addresses
+    description: ""
+    columns:
+      - name: address_id
+        description: ""
+      - name: zipcode
+        description: ""
+      - name: country
+        description: ""
+      - name: address
+        description: ""
+      - name: state
+        description: ""
+      - name: _fivetran_deleted
+        description: ""
+      - name: loaded_at
+        description: ""
+
+  - name: stg_events
+    description: ""
+    columns:
+      - name: event_id
+        description: ""
+      - name: page_url
+        description: ""
+      - name: event_type
+        description: ""
+      - name: user_id
+        description: ""
+      - name: product_id
+        description: ""
+      - name: session_id
+        description: ""
+      - name: created_at
+        description: ""
+      - name: order_id
+        description: ""
+      - name: _fivetran_deleted
+        description: ""
+      - name: loaded_at
+        description: ""
+
+  - name: stg_order_items
+    description: ""
+    columns:
+      - name: order_id
+        description: ""
+      - name: product_id
+        description: ""
+      - name: quantity
+        description: ""
+      - name: _fivetran_deleted
+        description: ""
+      - name: loaded_at
+        description: ""
+
+  - name: stg_orders
+    description: ""
+    columns:
+      - name: order_id
+        data_type: varchar
+        description: ""
+      - name: shipping_service
+        data_type: varchar
+        description: ""
+      - name: shipping_cost
+        data_type: float
+        description: ""
+      - name: address_id
+        data_type: varchar
+        description: ""
+      - name: created_at
+        data_type: timestamp_tz
+        description: ""
+      - name: promo_id
+        data_type: varchar
+        description: ""
+      - name: estimated_delivery_at
+        data_type: timestamp_tz
+        description: ""
+      - name: order_cost
+        data_type: float
+        description: ""
+      - name: user_id
+        data_type: varchar
+        description: ""
+      - name: order_total
+        data_type: float
+        description: ""
+      - name: delivered_at
+        data_type: timestamp_tz
+        description: ""
+      - name: tracking_id
+        data_type: varchar
+        description: ""
+      - name: status
+        data_type: varchar
+        description: "{{ doc('order_status') }}"
+      - name: _fivetran_deleted
+        data_type: boolean
+        description: ""
+      - name: loaded_at
+        data_type: timestamp_tz
+        description: ""
+
+  - name: stg_products
+    description: ""
+    columns:
+      - name: product_id
+        data_type: varchar
+        description: ""
+      - name: price
+        data_type: float
+        description: ""
+      - name: name
+        data_type: varchar
+        description: ""
+      - name: inventory
+        data_type: number
+        description: ""
+      - name: _fivetran_deleted
+        data_type: boolean
+        description: ""
+      - name: loaded_at
+        data_type: timestamp_tz
+        description: ""
+
+  - name: stg_promos
+    description: ""
+    columns:
+      - name: promo_id
+        data_type: varchar
+        description: ""
+      - name: discount
+        data_type: number
+        description: ""
+      - name: status
+        data_type: varchar
+        description: ""
+      - name: _fivetran_deleted
+        data_type: boolean
+        description: ""
+      - name: loaded_at
+        data_type: timestamp_tz
+        description: ""
+
+  - name: stg_users
+    description: ""
+    columns:
+      - name: user_id
+        data_type: varchar
+        description: ""
+      - name: updated_at
+        data_type: timestamp_tz
+        description: ""
+      - name: address_id
+        data_type: varchar
+        description: ""
+      - name: last_name
+        data_type: varchar
+        description: ""
+      - name: created_at
+        data_type: timestamp_tz
+        description: ""
+      - name: phone_number
+        data_type: varchar
+        description: ""
+      - name: total_orders
+        data_type: number
+        description: ""
+      - name: first_name
+        data_type: varchar
+        description: ""
+      - name: email
+        data_type: varchar
+        description: ""
+      - name: _fivetran_deleted
+        data_type: boolean
+        description: ""
+      - name: loaded_at
+        data_type: timestamp_tz
+        description: ""
