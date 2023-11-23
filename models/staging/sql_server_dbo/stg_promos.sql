@@ -9,7 +9,7 @@ source as (
 renamed as (
 
     select
-        promo_id::varchar(256),
+        promo_id::varchar(256) as promo_id,
         promo_name::varchar(32) as promo_name,
         promo_discount::number(38,0) as promo_discount,
         promo_status::varchar(256) as promo_status,

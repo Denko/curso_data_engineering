@@ -7,25 +7,25 @@
 
 WITH stg_users_incremental AS (
     SELECT *
-    FROM {{ source('sql_server_dbo','users') }}
+    FROM {{ ref('base_users') }}
     {% if is_incremental() %}
 
-        WHERE _fivetran_synced > (SELECT max(f_carga) FROM {{ this }})
+        WHERE _fivetran_synced > (SELECT max(loaded_at) FROM {{ this }})
 
     {% endif %}
 ),
 
 renamed_casted AS (
     SELECT
-        user_id::varchar(256),
-        updated_at::timestamp_tz(9),
-        address_id::varchar(256),
-        last_name::varchar(256),
-        created_at::timestamp_tz(9),
-        phone_number::varchar(50),
-        total_orders::number(38,0),
-        first_name::varchar(256),
-        email::varchar(256),
+        cast(user_id as varchar(256)) as user_id,
+        cast(updated_at as timestamp_tz(9)) as updated_at,
+        cast(address_id as varchar(256)) as address_id,
+        cast(last_name as varchar(256)) as last_name,
+        cast(created_at as timestamp_tz(9)) as created_at,
+        cast(phone_number as varchar(50)) as phone_number,
+        cast(total_orders as number(38,0)) as total_orders,
+        cast(first_name as varchar(256)) as first_name,
+        cast(email as varchar(256)) as email,
         _fivetran_deleted,
         _fivetran_synced as loaded_at
     FROM stg_users_incremental

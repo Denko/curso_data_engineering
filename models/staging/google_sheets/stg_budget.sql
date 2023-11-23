@@ -5,7 +5,7 @@ WITH src_budget_products AS (
 
 renamed_casted AS (
     SELECT
-        _row AS budget_id,
+        {{dbt_utils.generate_surrogate_key(['_row'])}} AS budget_id,
         product_id,
         quantity,
         month,
