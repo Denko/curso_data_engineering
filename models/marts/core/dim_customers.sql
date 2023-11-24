@@ -45,6 +45,8 @@ final as (
         customers.user_id as customer_id,
         customers.first_name,
         customers.last_name,
+        customers.phone_number,
+        customers.email,
         customer_orders.first_order_date::date as first_order_date,
         customer_orders.most_recent_order_date::date as most_recent_order_date,
         coalesce(customer_orders.number_of_orders, 0) as number_of_orders,
