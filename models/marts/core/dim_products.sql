@@ -13,6 +13,7 @@ renamed as (
         product_price,
         product_name,
         inventory
+        -- POR HACER
 
     from source
 
