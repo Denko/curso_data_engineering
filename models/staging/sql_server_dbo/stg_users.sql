@@ -1,14 +1,22 @@
-with
+{{ config(
+    materialized='incremental',
+    unique_key = 'user_id'
+    ) 
+    }}
 
-source as (
 
-    select * from {{ ref('base_users') }}
+WITH stg_users_incremental AS (
+    SELECT *
+    FROM {{ ref('base_users') }}
+    {% if is_incremental() %}
 
+        WHERE _fivetran_synced > (SELECT max(loaded_at) FROM {{ this }})
+
+    {% endif %}
 ),
 
-renamed as (
-
-    select
+renamed_casted AS (
+    SELECT
         cast(user_id as varchar(256)) as user_id,
         cast(updated_at as timestamp_tz(9)) as updated_at,
         cast(address_id as varchar(256)) as address_id,
@@ -20,10 +28,9 @@ renamed as (
         cast(email as varchar(256)) as email,
         _fivetran_deleted,
         _fivetran_synced as loaded_at
-
-    from source
-
+    FROM stg_users_incremental
 )
 
-select * from renamed
+SELECT * FROM renamed_casted
+
 

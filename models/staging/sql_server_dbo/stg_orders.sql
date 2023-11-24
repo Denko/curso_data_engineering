@@ -1,9 +1,19 @@
+{{ config(
+    materialized='incremental',
+    unique_key = 'order_id'
+    ) 
+    }}
+
 with
 
 source as (
+    select * 
+    from {{ ref('base_orders') }}
+    {% if is_incremental() %}
 
-    select * from {{ ref('base_orders') }}
+        WHERE _fivetran_synced > (SELECT max(loaded_at) FROM {{ this }})
 
+    {% endif %}
 ),
 
 renamed as (
@@ -47,4 +57,3 @@ select {{ dbt_utils.generate_surrogate_key('9999') }},
         null,
         null,
         null
-
