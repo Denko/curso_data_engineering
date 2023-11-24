@@ -1,0 +1,99 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: ""
+    columns:
+      - name: customer_id
+        data_type: varchar
+        description: ""
+
+      - name: first_name
+        data_type: varchar
+        description: ""
+
+      - name: last_name
+        data_type: varchar
+        description: ""
+
+      - name: first_order_date
+        data_type: date
+        description: ""
+
+      - name: most_recent_order_date
+        data_type: date
+        description: ""
+
+      - name: number_of_orders
+        data_type: number
+        description: ""
+
+      - name: user_total_cost_usd
+        data_type: number
+        description: ""
+
+      - name: user_avg_order_cost_usd
+        data_type: number
+        description: ""
+
+  - name: dim_date
+    description: ""
+    columns:
+      - name: date_forecast
+        data_type: date
+        description: ""
+
+      - name: id_date
+        data_type: number
+        description: ""
+
+      - name: year_date
+        data_type: number
+        description: ""
+
+      - name: month_date
+        data_type: number
+        description: ""
+
+      - name: desc_month
+        data_type: varchar
+        description: ""
+
+      - name: id_year_month
+        data_type: number
+        description: ""
+
+      - name: day_before
+        data_type: date
+        description: ""
+
+      - name: year_week_day
+        data_type: varchar
+        description: ""
+
+      - name: week_date
+        data_type: number
+        description: ""
+
+  - name: dim_shipping_services
+    description: ""
+    columns:
+      - name: shipping_service_id
+        data_type: varchar
+        description: ""
+
+      - name: shipping_service_name
+        data_type: varchar
+        description: ""
+
+      - name: total_orders_service
+        data_type: number
+        description: ""
+
+      - name: average_shipping_cost_usd
+        data_type: number
+        description: ""
+
+      - name: avg_diff_order_created_and_delivered
+        data_type: number
+        description: ""

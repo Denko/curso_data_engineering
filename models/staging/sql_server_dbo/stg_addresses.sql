@@ -1,6 +1,17 @@
+{{ config(
+    materialized='incremental',
+    unique_key = 'address_id'
+    ) 
+    }}
+
 WITH src_addresses AS (
     SELECT *
     FROM {{ source('sql_server_dbo', 'addresses') }}
+    {% if is_incremental() %}
+
+        WHERE _fivetran_synced > (SELECT max(loaded_at) FROM {{ this }})
+
+    {% endif %}
 ),
 
 -- Ejemplo con casteo aunque no es necesario en este caso porque los campos vienen ya con buen formato

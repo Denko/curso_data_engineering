@@ -1,9 +1,19 @@
+{{ config(
+    materialized='incremental',
+    unique_key = 'order_id'
+    ) 
+    }}
+
 with
 
 source as (
+    select * 
+    from {{ ref('base_orders') }}
+    {% if is_incremental() %}
 
-    select * from {{ ref('base_orders') }}
+        WHERE _fivetran_synced > (SELECT max(loaded_at) FROM {{ this }})
 
+    {% endif %}
 ),
 
 renamed as (
@@ -34,7 +44,7 @@ union all
 -- Code 9999 for no order and today date for loading
 select {{ dbt_utils.generate_surrogate_key('9999') }},
         'no_shipping_service',
-        0,
+        null,
         {{ dbt_utils.generate_surrogate_key('9999') }}, 
         null, 
         {{ dbt_utils.generate_surrogate_key('9999') }},
@@ -47,4 +57,3 @@ select {{ dbt_utils.generate_surrogate_key('9999') }},
         null,
         null,
         null
-
