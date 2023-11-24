@@ -42,7 +42,7 @@ renamed as (
         shipping_service,
         shipping_cost_usd,
         address_id,
-        created_at as created_at_utc,
+        created_at_utc,
         promo_id,
         estimated_delivery_at_utc,
         order_cost_usd,

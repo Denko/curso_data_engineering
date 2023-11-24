@@ -18,11 +18,11 @@ WITH stg_budget_products AS (
 
 renamed_casted AS (
     SELECT
-        {{dbt_utils.generate_surrogate_key(['_row'])}} AS budget_id,
-        product_id,
-        quantity,
-        month,
-        _fivetran_synced AS loaded_at
+        {{dbt_utils.generate_surrogate_key(['_row'])}}::varchar(256) AS budget_id,
+        product_id::varchar(256) as product_id,
+        quantity::number(38,0) as quantity,
+        month::date as budget_date,
+        _fivetran_synced::timestamp_tz(9) AS loaded_at
     FROM stg_budget_products
 )
 

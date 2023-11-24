@@ -28,13 +28,13 @@ customers as (
 
     select * from {{ ref('dim_customers') }}
 
-)
+),
 
 dates as (
 
     select * from {{ ref('dim_dates') }}
 
-)
+),
 
 
 renamed as (

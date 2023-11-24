@@ -4,7 +4,7 @@ WITH src_addresses AS (
 ),
 
 
--- POR HACER
+-- POR HACER-- número de pedidos por estado, gasto total por estado, media de gasto por estado o demás (en tabla intermedia orders_addresses)
 renamed_casted AS (
     SELECT
         address_id,
@@ -12,7 +12,6 @@ renamed_casted AS (
         country,
         address,
         state
-        -- número de pedidos por estado, gasto total por estado, media de gasto por estado o demás (en tabla intermedia orders_addresses)
     FROM src_addresses
 )
 
